@@ -1,0 +1,34 @@
+<table>
+    <tbody>
+        <tr>
+            <th>Concepto</th>
+            <th>Cantidad</th>
+        </tr>
+        {{#items}}
+        <tr>
+            <td>Alquiler de trastero situado en {{local.domicilio}}, {{local.cod_postal}}, {{local.poblacion}}, {{local.provincia}} por el mes de {{mes}}</td>
+            <td>{{.}} €</td>
+        </tr>
+        {{/items}}
+        <tr>
+            <td>&ensp;</td>
+            <td>&ensp;</td>
+        </tr>
+        <tr>
+            <td style="text-align: right;">Base imponible</td>
+            <td>{{total_base}}€</td>
+        </tr>
+        <tr>
+            <td style="text-align: right;">IVA {{iva}}%</td>
+            <td>{{total_iva}}€</td>
+        </tr>
+        <tr>
+            <td>&ensp;</td>
+            <td>&ensp;</td>
+        </tr>
+        <tr>
+            <td style="text-align: right;">Total a pagar</td>
+            <td>{{total}}€</td>
+        </tr>
+    </tbody>
+</table>

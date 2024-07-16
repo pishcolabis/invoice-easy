@@ -1,0 +1,39 @@
+{
+    "iva": 21,
+    "local": {
+        "domicilio": "Calle Falsa 123",
+        "cod_postal": 1234,
+        "poblacion": "Springfield",
+        "provincia": "Springfield"
+    },
+    "arrendador": {
+        "nombre": "Juan",
+        "domicilio": "",
+        "cod_postal": 1234,
+        "poblacion": "Springfield",
+        "provincia": "Springfield",
+        "dni": 12345678
+    },
+    "arrendatarios": [
+        {
+            "nombre": "Homero",
+            "domicilio": "Calle Falsa 123",
+            "cod_postal": 1234,
+            "poblacion": "Springfield",
+            "provincia": "Springfield",
+            "dni": 12345678,
+            "precio": 60,
+            "cantidad": 1
+        },
+        {
+            "nombre": "Marge",
+            "domicilio": "Calle Falsa 123",
+            "cod_postal": 1234,
+            "poblacion": "Springfield",
+            "provincia": "Springfield",
+            "dni": 12345678,
+            "precio": 60,
+            "cantidad": 1
+        }
+    ]
+}
