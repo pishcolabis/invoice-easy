@@ -1,5 +1,5 @@
 const Mustache = require('mustache');
-const pdf = require('html-pdf');
+const puppeteer = require('puppeteer');
 const readline = require('node:readline');
 const fs = require('fs');
 const path = require('path');
@@ -105,9 +105,19 @@ rl.on('close', () => {
                 const template = [landlordTableTemplateRendered, invoiceDateTemplateRendered, tenantTableTemplateRendered, conceptsTemplateRendered].join('\n');
 
                 const source = Mustache.render(baseTemplate, { template }, undefined, {escape: (text) => text});
-                pdf.create(source, { format: 'A4' }).toFile(`./dist/${arrendatario.nombre}/${mes}.pdf`, function(err, res) {
-                   if (err) return console.log(err);
-                });
+
+                const outputDir = path.resolve(__dirname, '../dist', arrendatario.nombre);
+                const outputPath = path.join(outputDir, `${mes}.pdf`);
+                fs.mkdirSync(outputDir, { recursive: true });
+                try {
+                    const browser = await puppeteer.launch({ headless: true });
+                    const page = await browser.newPage();
+                    await page.setContent(source, { waitUntil: 'networkidle0' });
+                    await page.pdf({ path: outputPath, format: 'A4', printBackground: true });
+                    await browser.close();
+                } catch (err) {
+                    console.error('Error generating PDF with Puppeteer:', err);
+                }
             });
 
         });
